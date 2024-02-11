@@ -1,5 +1,11 @@
 return {
-    "folke/which-key.nvim",
+    {
+        "folke/which-key.nvim",
+        opts = {},
+        config = function()
+            require "which-key-setup"
+        end,
+    },
 
     -- Detect tabstop and shiftwidth automatically
     "tpope/vim-sleuth",
@@ -84,5 +90,24 @@ return {
             { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
-    }
+    },
+
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                cond = function()
+                    return vim.fn.executable "make" == 1
+                end,
+            },
+        },
+        config = function()
+            require "telescope-setup"
+        end,
+    },
+
 }
