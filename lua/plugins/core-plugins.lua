@@ -9,22 +9,22 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-	depedencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
-	build = ":TSUpdate",
-        config = function ()
+        depedencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
+        build = ":TSUpdate",
+        config = function()
             require "treesitter-setup"
         end,
     },
 
     {
         -- Autocompletion
-	"hrsh7th/nvim-cmp",
-	dependencies = {
-	    -- Snippet Engine & its associated nvim-cmp source
-	    "L3MON4D3/LuaSnip",
-	    "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            -- Snippet Engine & its associated nvim-cmp source
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
 
             -- Adds LSP completion capabilities
             'hrsh7th/cmp-nvim-lsp',
@@ -32,14 +32,14 @@ return {
 
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
-	},
+        },
         config = function()
             require "cmp-setup"
         end,
     },
 
     {
-	"windwp/nvim-autopairs",
+        "windwp/nvim-autopairs",
         -- Optional dependency
         dependencies = { 'hrsh7th/nvim-cmp' },
         config = function()
@@ -67,4 +67,22 @@ return {
             },
         },
     },
+
+    {
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+        },
+        keys = {
+            { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        },
+    }
 }
