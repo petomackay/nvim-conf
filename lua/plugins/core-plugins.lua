@@ -38,6 +38,7 @@ return {
 
             -- Adds a number of user-friendly snippets
             'rafamadriz/friendly-snippets',
+
         },
         config = function()
             require "cmp-setup"
@@ -69,7 +70,7 @@ return {
                 icons_enabled = true,
                 theme = 'auto',
                 component_separators = '|',
-                section_separators = '',
+                section_separators = { left = '', right = '' },
             },
         },
     },
